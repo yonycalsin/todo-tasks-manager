@@ -1,8 +1,11 @@
-package com.yonycalsin.todotasksmanager
+package com.yonycalsin.todotasksmanager.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.yonycalsin.todotasksmanager.viewholders.CategoriesViewHolder
+import com.yonycalsin.todotasksmanager.R
+import com.yonycalsin.todotasksmanager.models.TaskCategory
 
 class CategoriesAdapter(private val categories: List<TaskCategory>) :
     RecyclerView.Adapter<CategoriesViewHolder>() {

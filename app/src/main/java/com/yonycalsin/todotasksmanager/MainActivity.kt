@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.yonycalsin.todotasksmanager.adapters.CategoriesAdapter
+import com.yonycalsin.todotasksmanager.models.TaskCategory
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,6 +19,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var categoriesAdapter: CategoriesAdapter
 
+    private lateinit var recyclerViewTasks: RecyclerView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -29,6 +33,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun initComponents() {
         recyclerViewCategories = findViewById(R.id.recyclerViewCategories)
+
+        recyclerViewTasks = findViewById(R.id.recyclerViewTasks)
     }
 
     private fun initUI() {
