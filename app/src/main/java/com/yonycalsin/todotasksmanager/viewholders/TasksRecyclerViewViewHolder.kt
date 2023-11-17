@@ -27,9 +27,10 @@ class TasksRecyclerViewViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         }
 
         val color = when (task.category) {
-            TaskCategory.Business -> R.color.primary_500
-            TaskCategory.Other -> R.color.secondary_500
-            TaskCategory.Personal -> R.color.success_500
+            TaskCategory.Personal -> R.color.primary_500
+            TaskCategory.Business -> R.color.secondary_500
+            TaskCategory.Other -> R.color.success_500
+
         }
 
         checkboxTaskStatus.buttonTintList =

@@ -21,7 +21,7 @@
             android:id="@+id/radioButtonPersonalCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/secondary_500"
+            android:buttonTint="@color/primary_500"
             android:checked="true"
             android:text="Personal" />
 
@@ -30,7 +30,7 @@
             android:id="@+id/radioButtonBusinessCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/primary_500"
+            android:buttonTint="@color/secondary_500"
             android:text="Business" />
 
 

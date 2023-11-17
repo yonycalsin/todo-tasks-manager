@@ -1,5 +1,6 @@
 package com.yonycalsin.todotasksmanager
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -64,7 +65,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
-        categoriesRecyclerViewAdapter = CategoriesRecyclerViewAdapter(categories)
+        categoriesRecyclerViewAdapter =
+            CategoriesRecyclerViewAdapter(categories) { handleOnCategorySelected(it) }
 
         recyclerViewCategories.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
@@ -83,6 +85,14 @@ class MainActivity : AppCompatActivity() {
         tasks[position].isSelected = !tasks[position].isSelected
 
         tasksRecyclerViewAdapter.notifyItemChanged(position)
+    }
+
+    private fun handleOnCategorySelected(position: Int) {
+        categories[position].isSelected = !categories[position].isSelected
+
+        updateAllTasksRecyclerView()
+
+        categoriesRecyclerViewAdapter.notifyItemChanged(position)
     }
 
     private fun showDialogAddTask() {
@@ -116,12 +126,23 @@ class MainActivity : AppCompatActivity() {
 
                 tasks.add(TaskModel(editTextTaskName.text.toString(), selectedTaskCategory))
 
-                tasksRecyclerViewAdapter.notifyItemInserted(tasks.lastIndex)
+                updateAllTasksRecyclerView()
 
                 dialog.hide()
             }
         }
 
         dialog.show()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun updateAllTasksRecyclerView() {
+        val selectedCategories = categories.filter { it.isSelected }
+
+        val newTasks = tasks.filter { selectedCategories.contains(it.category) }
+
+        tasksRecyclerViewAdapter.tasks = newTasks
+
+        tasksRecyclerViewAdapter.notifyDataSetChanged()
     }
 }

@@ -8,7 +8,7 @@ import com.yonycalsin.todotasksmanager.models.TaskModel
 import com.yonycalsin.todotasksmanager.viewholders.TasksRecyclerViewViewHolder
 
 class TasksRecyclerViewAdapter(
-    private val tasks: List<TaskModel>,
+    var tasks: List<TaskModel>,
     private val handleOnTaskSelected: (Int) -> Unit
 ) :
     RecyclerView.Adapter<TasksRecyclerViewViewHolder>() {
